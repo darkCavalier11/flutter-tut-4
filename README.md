@@ -32,3 +32,18 @@ also the following code can be used where we need to render a part of the widget
       }
     ...
 ```
+the child above is the widget you donot want to rebuild everytime product changes. here is an example. here only the Badge's value rebuilts and not the icon
+```
+Consumer<Cart>(
+  builder: (context, cart, child) => Badge(
+    child: child,
+    value: cart.itemCount.toString(),
+  ),
+  child: IconButton(
+    icon: Icon(Icons.shopping_cart),
+    onPressed: null,
+  ),
+)
+```
+
+handle temporary state with StatefulWidget is a better choice.
