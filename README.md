@@ -1,16 +1,25 @@
-# tut_
+# tut_4
+## Provider
+provier work as a wrap around the widget and the inside wrapper get the data of the wrapper. wrapper are ChangeNotifiers and the widget inside it rebuilts. 
 
-A new Flutter project.
+### Listening data
+```
+Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+      child: MaterialApp(
+        title: 'My App',
+        ...
+```
+Here the Product is a model provider holding the state data. when first loaded Products get instantiated and populated to the widget. when creating widget from a list it is recommended that a .value default constructor should be used to avoid bougs and unusual behavior. here value is used because we do not need to instantiate the products[i]. each item in the list get a ChangeNotifier parent.
+```
+itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+        value: products[i],
+        child: ProductItem(),
+```
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### getting data in a widget in widget tree
+fetching the data from state using Provider with type Products.
+```
+final productsData = Provider.of<Products>(context);
+```
