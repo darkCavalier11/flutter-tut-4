@@ -23,3 +23,12 @@ fetching the data from state using Provider with type Products.
 ```
 final productsData = Provider.of<Products>(context);
 ```
+also the following code can be used where we need to render a part of the widget tree rather than the entire tree.
+```
+    ....
+    Consumer<Product>(
+      builder: (ctx, product, child) {
+          return Widget(...)
+      }
+    ...
+```
