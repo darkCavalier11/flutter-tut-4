@@ -37,10 +37,14 @@ class CartItem extends StatelessWidget {
           padding: EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
+              backgroundColor: Theme.of(context).accentColor,
               child: FittedBox(
                 child: Padding(
                   padding: const EdgeInsets.all(5),
-                  child: Text('\$$price'),
+                  child: Text('\$$price',
+                      style: TextStyle(
+                        color: Colors.white,
+                      )),
                 ),
               ),
             ),
